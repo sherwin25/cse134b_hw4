@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recipes | Culinary Chronicles</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="theme-switcher">
+      <button id="theme-toggle">Toggle Theme</button>
+    </div>
+    <header class="site-header">
+      <h1>Our Recipes</h1>
+    </header>
+
+    <nav class="main-nav">
+      <ul class="nav-list">
+        <li class="nav-item"><a href="index.html">Home</a></li>
+        <li class="nav-item"><a href="about.html">About</a></li>
+        <li class="nav-item"><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <main class="content">
+      <section class="recipe-category">
+        <h2>Main Courses</h2>
+        <article class="recipe">
+          <!-- Image Source: https://www.allrecipes.com/recipes/80/main-dish/ -->
+          <img
+            src="Spicy-Chicken-Burger-with-Beer-Cheese-Sauce_Chef-Mo_4x3-2b536ee8e8954b4abae280c8f52d3b00.webp"
+            alt="Spicy Chicken Burger with Beer Cheese Sauce"
+          />
+          <div class="recipe-description">
+            <h3>Spicy Chicken Burger with Beer Cheese Sauce</h3>
+            <p>
+              This delectable spicy chicken burger features chicken that's been
+              soaked in a marinade of beer and spices for four hours before
+              being expertly grilled. Topped with a savory cheese sauce, it's
+              served on a grilled bun with your preferred toppings.
+            </p>
+          </div>
+        </article>
+        <article class="recipe">
+          <!-- Image Source: https://www.allrecipes.com/recipes/80/main-dish/ -->
+          <img
+            src="Vegan-Jamaican-Curry_Shelia-Johnson_4x3-74412ba25e834d5bb2dd323593051410.webp"
+            alt="Vegan Jamaican Curry"
+          />
+          <div class="recipe-description">
+            <h3>Vegan Jamaican Curry</h3>
+            <p>
+              A celebration of earthy flavors, this vegan Jamaican curry
+              features sautéed tofu with robust curry and smooth coconut
+              texture, served over fluffy rice.
+            </p>
+          </div>
+        </article>
+      </section>
+
+      <section class="recipe-category">
+        <h2>Desserts</h2>
+        <article class="recipe">
+          <!-- Image Source: https://www.allrecipes.com/recipes/80/main-dish/ -->
+          <img src="rice-crispy.webp" alt="Chocolate Rice Krispie Treats" />
+          <div class="recipe-description">
+            <h3>Chocolate Rice Krispie Treats</h3>
+            <p>
+              A twist on the classic, these coconut chocolate Rice Krispies
+              Treats were crafted during a kitchen exploration with my
+              6-year-old son.
+            </p>
+          </div>
+        </article>
+        <article class="recipe">
+          <!-- Image Source: https://www.allrecipes.com/recipes/80/main-dish/ -->
+          <img
+            src="Cranberry-Lemon-Bars_Pat-Bernitt_4x3-2aea0ff36726416eb0870901c9191f48.webp"
+            alt="Cranberry Lemon Bars"
+          />
+          <div class="recipe-description">
+            <h3>Cranberry Lemon Bars</h3>
+            <p>
+              A year-round favorite, these cranberry lemon bars are so cherished
+              that we stockpile cranberries to enjoy this treat any season.
+            </p>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2023 Culinary Chronicles. All rights reserved.</p>
+    </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const themeToggleButton = document.getElementById("theme-toggle");
+        const currentTheme = localStorage.getItem("theme");
+
+        // Set initial theme
+        if (currentTheme) {
+          document.body.classList.add(currentTheme);
+        }
+
+        themeToggleButton.addEventListener("click", function () {
+          document.body.classList.toggle("dark-theme");
+          let theme = "light-theme";
+          if (document.body.classList.contains("dark-theme")) {
+            theme = "dark-theme";
+          }
+          localStorage.setItem("theme", theme);
+        });
+      });
+    </script>
+  </body>
+</html>

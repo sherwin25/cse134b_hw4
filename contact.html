@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | Culinary Chronicles</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="theme-switcher">
+      <button id="theme-toggle">Toggle Theme</button>
+    </div>
+    <header class="site-header">
+      <h1>Contact Us</h1>
+    </header>
+    <nav class="main-nav">
+      <ul class="nav-list">
+        <li class="nav-item"><a href="index.html">Home</a></li>
+        <li class="nav-item"><a href="recipes.html">Recipes</a></li>
+        <li class="nav-item"><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+
+    <main class="content">
+      <section class="gif-section">
+        <!-- GIF Source: https://www.google.com/url?sa=i&url=https%3A%2F%2Ftenor.com%2Fview%2Fcooking-kid-baking-fast-mixing-batter-gif-17412152&psig=AOvVaw1dhw04kd5NVxZuWm4h_ozr&ust=1699684718846000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCNjyp5_puIIDFQAAAAAdAAAAABAR -->
+        <img
+          src="cooking-kid.gif"
+          alt="A gif of a little girl stirring a pot"
+        />
+      </section>
+      <br />
+
+      <section class="contact-section">
+        <h2>Email</h2>
+        <p>
+          For any inquiries, feedback, or collaboration opportunities, please
+          email us at:
+          <a href="mailto:info@culinarychronicles.com"
+            >info@culinarychronicles.com</a
+          >
+        </p>
+      </section>
+
+      <section class="contact-section">
+        <h2>Contact Form</h2>
+        <form
+          action="https://httpbin.org/post"
+          method="post"
+          class="contact-form"
+        >
+          <fieldset>
+            <legend>Write to Us</legend>
+            <label for="name">Name:</label>
+            <input
+              type="text"
+              id="name"
+              name="user_name"
+              required
+              pattern="^[A-Za-z\s]+$"
+              title="Name should only contain letters and spaces."
+            />
+            <output for="name" class="form-output"></output><br />
+
+            <label for="mail">E-mail:</label>
+            <input type="email" id="mail" name="user_email" required />
+            <output for="mail" class="form-output"></output><br />
+
+            <label for="comments">Comments:</label>
+            <textarea
+              id="comments"
+              name="user_comments"
+              required
+              minlength="10"
+              maxlength="500"
+              title="Comments should be 10-500 characters long."
+            ></textarea>
+            <output for="comments" class="form-output"></output><br />
+
+            <input type="hidden" name="possible_bot" value="true" />
+            <input type="submit" value="Submit" />
+          </fieldset>
+        </form>
+      </section>
+
+      <section class="newsletter-section">
+        <h2>Join our Newsletter</h2>
+        <form action="/submit_newsletter" method="post" class="newsletter-form">
+          <label for="newsletter-email">Enter your email:</label>
+          <input type="email" id="newsletter-email" name="newsletter_email" />
+          <button type="submit">Subscribe</button>
+        </form>
+      </section>
+
+      <section class="social-media-section">
+        <h2>Follow Us</h2>
+        <p>
+          Stay connected and keep up with our latest recipes and updates on our
+          social media platforms:
+        </p>
+        <ul class="social-media-list">
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Pinterest</a></li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2023 Culinary Chronicles. All rights reserved.</p>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const themeToggleButton = document.getElementById("theme-toggle");
+        const currentTheme = localStorage.getItem("theme");
+
+        // Set initial theme
+        if (currentTheme) {
+          document.body.classList.add(currentTheme);
+        }
+
+        themeToggleButton.addEventListener("click", function () {
+          document.body.classList.toggle("dark-theme");
+          let theme = "light-theme";
+          if (document.body.classList.contains("dark-theme")) {
+            theme = "dark-theme";
+          }
+          localStorage.setItem("theme", theme);
+        });
+      });
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector(".contact-form");
+        let form_errors = [];
+
+        // keep track of form errors, custom outputs
+        // only thing is that I keep adding errors when continuously typing
+        // need to learn for another time, to only add errors once when submitting
+        const nameInput = document.getElementById("name");
+        const emailInput = document.getElementById("mail");
+        const commentsTextArea = document.getElementById("comments");
+
+        // Character count for comments
+        const commentsOutput = document.querySelector('output[for="comments"]');
+        commentsTextArea.addEventListener("input", function () {
+          const remaining = 500 - commentsTextArea.value.length;
+          commentsOutput.textContent = `${remaining} characters remaining`;
+          commentsOutput.style.color = remaining < 50 ? "#d9534f" : "#5cb85c";
+        });
+
+        // Masking and custom validity for name input
+        nameInput.addEventListener("input", function () {
+          const validName = /^[A-Za-z\s]*$/.test(nameInput.value);
+          if (!validName) {
+            nameInput.classList.add("invalid");
+            nameInput.setCustomValidity(
+              "Name should only contain letters and spaces."
+            );
+            form_errors.push({
+              field: "name",
+              error: "Invalid character entered",
+            });
+          } else {
+            nameInput.classList.remove("invalid");
+            nameInput.setCustomValidity("");
+          }
+        });
+
+        // Masking and custom validity for email input
+        emailInput.addEventListener("input", function () {
+          const validEmail = /^[^@]+@[^@.]+\.[a-z]+$/i.test(emailInput.value);
+          if (!validEmail) {
+            emailInput.classList.add("invalid");
+            emailInput.setCustomValidity("Please enter a valid email address.");
+            form_errors.push({
+              field: "email",
+              error: "Invalid email entered",
+            });
+          } else {
+            emailInput.classList.remove("invalid");
+            emailInput.setCustomValidity("");
+          }
+        });
+
+        // Masking and custom validity for comments input
+        commentsTextArea.addEventListener("input", function () {
+          const validComments =
+            commentsTextArea.value.length >= 10 &&
+            commentsTextArea.value.length <= 500;
+          if (!validComments) {
+            commentsTextArea.classList.add("invalid");
+            commentsTextArea.setCustomValidity(
+              "Comments should be 10-500 characters long."
+            );
+            form_errors.push({
+              field: "comments",
+              error: "Invalid comments length",
+            });
+          } else {
+            commentsTextArea.classList.remove("invalid");
+            commentsTextArea.setCustomValidity("");
+          }
+        });
+
+        // Form submission with error tracking
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+          if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+          }
+
+          // Add form errors to a hidden input before submission
+          const errorsInput = document.createElement("input");
+          errorsInput.type = "hidden";
+          errorsInput.name = "form-errors";
+          errorsInput.value = JSON.stringify(form_errors);
+          form.appendChild(errorsInput);
+
+          form.submit();
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | Culinary Chronicles</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <h1>Contact Us</h1>
+    </header>
+
+    <nav class="main-nav">
+      <ul class="nav-list">
+        <li class="nav-item"><a href="index.html">Home</a></li>
+        <li class="nav-item"><a href="recipes.html">Recipes</a></li>
+        <li class="nav-item"><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+
+    <main class="content">
+      <section class="gif-section">
+        <!-- GIF Source: https://www.google.com/url?sa=i&url=https%3A%2F%2Ftenor.com%2Fview%2Fcooking-kid-baking-fast-mixing-batter-gif-17412152&psig=AOvVaw1dhw04kd5NVxZuWm4h_ozr&ust=1699684718846000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCNjyp5_puIIDFQAAAAAdAAAAABAR -->
+        <img
+          src="cooking-kid.gif"
+          alt="A gif of a little girl stirring a pot"
+        />
+      </section>
+      <br />
+
+      <section class="contact-section">
+        <h2>Email</h2>
+        <p>
+          For any inquiries, feedback, or collaboration opportunities, please
+          email us at:
+          <a href="mailto:info@culinarychronicles.com"
+            >info@culinarychronicles.com</a
+          >
+        </p>
+      </section>
+
+      <section class="contact-section">
+        <h2>Contact Form</h2>
+        <form
+          action="https://httpbin.org/post"
+          method="post"
+          class="contact-form"
+        >
+          <fieldset>
+            <legend>Write to Us</legend>
+            <label for="name">Name:</label>
+            <input
+              type="text"
+              id="name"
+              name="user_name"
+              required
+              pattern="^[A-Za-z\s]+$"
+              title="Name should only contain letters and spaces."
+            />
+            <output for="name" class="form-output"></output><br />
+
+            <label for="mail">E-mail:</label>
+            <input type="email" id="mail" name="user_email" required />
+            <output for="mail" class="form-output"></output><br />
+
+            <label for="comments">Comments:</label>
+            <textarea
+              id="comments"
+              name="user_comments"
+              required
+              minlength="10"
+              maxlength="500"
+              title="Comments should be 10-500 characters long."
+            ></textarea>
+            <output for="comments" class="form-output"></output><br />
+
+            <input type="hidden" name="possible_bot" value="true" />
+            <input type="submit" value="Submit" />
+          </fieldset>
+        </form>
+      </section>
+
+      <section class="newsletter-section">
+        <h2>Join our Newsletter</h2>
+        <form action="/submit_newsletter" method="post" class="newsletter-form">
+          <label for="newsletter-email">Enter your email:</label>
+          <input type="email" id="newsletter-email" name="newsletter_email" />
+          <button type="submit">Subscribe</button>
+        </form>
+      </section>
+
+      <section class="social-media-section">
+        <h2>Follow Us</h2>
+        <p>
+          Stay connected and keep up with our latest recipes and updates on our
+          social media platforms:
+        </p>
+        <ul class="social-media-list">
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Pinterest</a></li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2023 Culinary Chronicles. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

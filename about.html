@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us | Culinary Chronicles</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="theme-switcher">
+      <button id="theme-toggle">Toggle Theme</button>
+    </div>
+    <header class="site-header">
+      <h1>About Us</h1>
+    </header>
+
+    <nav class="main-nav">
+      <ul class="nav-list">
+        <li class="nav-item"><a href="index.html">Home</a></li>
+        <li class="nav-item"><a href="recipes.html">Recipes</a></li>
+        <li class="nav-item"><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <main class="content">
+      <section class="gif-section">
+        <!-- GIF Source: https://www.google.com/url?sa=i&url=https%3A%2F%2Fgiphy.com%2Fexplore%2Ffixate-cooking&psig=AOvVaw1dhw04kd5NVxZuWm4h_ozr&ust=1699684718846000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCNjyp5_puIIDFQAAAAAdAAAAABAJ -->
+        <img
+          src="homer.gif"
+          alt="A gif of Homer Simpson trying to cook and it gets on fire"
+        />
+      </section>
+
+      <section id="mission" class="content-section">
+        <h2>Our Mission</h2>
+        <p>
+          At Culinary Chronicles, our mission is to bring the rich heritage of
+          Tex-Mex cuisine to a broader audience. We believe in the power of
+          sharing authentic recipes, intertwining modern twists with traditional
+          flavors.
+        </p>
+      </section>
+
+      <section id="our-story" class="content-section">
+        <h2>Our Story</h2>
+        <p>
+          The journey of Culinary Chronicles began with a passion for cooking
+          and storytelling. Inspired by traditional recipes and the
+          ever-evolving food blogging trends, we decided to create a platform
+          where everyone, from beginners to expert chefs, can come together and
+          share their love for Tex-Mex cuisine.
+        </p>
+      </section>
+
+      <section class="content-section">
+        <h2>Our Beginnings</h2>
+        <p>We started back in 2020...</p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2023 Culinary Chronicles. All rights reserved.</p>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const themeToggleButton = document.getElementById("theme-toggle");
+        const currentTheme = localStorage.getItem("theme");
+
+        // Set initial theme
+        if (currentTheme) {
+          document.body.classList.add(currentTheme);
+        }
+
+        themeToggleButton.addEventListener("click", function () {
+          document.body.classList.toggle("dark-theme");
+          let theme = "light-theme";
+          if (document.body.classList.contains("dark-theme")) {
+            theme = "dark-theme";
+          }
+          localStorage.setItem("theme", theme);
+        });
+      });
+    </script>
+  </body>
+</html>

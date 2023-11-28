@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home | Culinary Chronicles</title>
+    <link rel="stylesheet" href="styles.css" />
+    <meta
+      name="description"
+      content="A culinary journey through Tex-Mex recipes."
+    />
+    <script src="analytics.js"></script>
+  </head>
+  <body>
+    <div class="theme-switcher">
+      <button id="theme-toggle">Toggle Theme</button>
+    </div>
+    <header class="site-header">
+      <!-- <div class="hamburger" onclick="toggleMenu()">☰</div> -->
+      <h1>Welcome to Culinary Chronicles</h1>
+    </header>
+
+    <nav class="main-nav">
+      <ul class="nav-list">
+        <li class="nav-item"><a href="recipes.html">Recipes</a></li>
+        <li class="nav-item"><a href="about.html">About</a></li>
+        <li class="nav-item"><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <main class="content">
+      <aside class="featured-recipe">
+        <h3>Featured Recipe</h3>
+        <picture>
+          <img src="texmex.jpg" alt="Featured Tex-Mex dish" />
+        </picture>
+        <p>Try out our most loved Tex-Mex dish this week!</p>
+        <p>
+          Discover the richness of Tex-Mex cuisine and journey with us through
+          culinary adventures.
+        </p>
+      </aside>
+
+      <section class="discover-recipes">
+        <h2>Discover Recipes</h2>
+        <p>
+          Dive into a collection of delicious Tex-Mex recipes. From appetizers
+          to main courses to desserts, find the perfect dish for any occasion.
+        </p>
+        <a href="recipes.html">Explore Recipes</a>
+      </section>
+
+      <section class="about-us">
+        <h2>About Us</h2>
+        <p>
+          Learn more about our mission in the world of culinary blogging and how
+          we share diverse recipes.
+        </p>
+        <a href="about.html">Read More</a>
+      </section>
+
+      <section class="contact-us">
+        <h2>Contact Us</h2>
+        <p>
+          Have questions or feedback? We'd love to hear from you. Reach out to
+          us or follow on social media.
+        </p>
+        <a href="contact.html">Get in Touch</a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2023 Culinary Chronicles. All rights reserved.</p>
+    </footer>
+
+    <script>
+      function toggleMenu() {
+        var navList = document.querySelector(".nav-list");
+        navList.classList.toggle("active");
+      }
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const themeToggleButton = document.getElementById("theme-toggle");
+        const currentTheme = localStorage.getItem("theme");
+
+        // Set initial theme
+        if (currentTheme) {
+          document.body.classList.add(currentTheme);
+        }
+
+        themeToggleButton.addEventListener("click", function () {
+          document.body.classList.toggle("dark-theme");
+          let theme = "light-theme";
+          if (document.body.classList.contains("dark-theme")) {
+            theme = "dark-theme";
+          }
+          localStorage.setItem("theme", theme);
+        });
+      });
+    </script>
+  </body>
+</html>
