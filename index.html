@@ -12,11 +12,10 @@
     <script src="analytics.js"></script>
   </head>
   <body>
-    <div class="theme-switcher">
+    <div class="theme-switcher" style="display: none">
       <button id="theme-toggle">Toggle Theme</button>
     </div>
     <header class="site-header">
-      <!-- <div class="hamburger" onclick="toggleMenu()">☰</div> -->
       <h1>Welcome to Culinary Chronicles</h1>
     </header>
 
@@ -82,6 +81,10 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
+        // Display the theme toggle button only if JavaScript is enabled
+        const themeSwitcherDiv = document.querySelector(".theme-switcher");
+        themeSwitcherDiv.style.display = "block";
+
         const themeToggleButton = document.getElementById("theme-toggle");
         const currentTheme = localStorage.getItem("theme");
 
